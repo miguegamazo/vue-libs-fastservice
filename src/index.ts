@@ -1,6 +1,6 @@
 import { get, set } from "lodash";
 import { ObjectId } from "mongodb";
-import { dataDB } from "@miguegamazo/lib-socket-fastservice";
+import type { dataDB } from "@miguegamazo/lib-socket-fastservice";
 export type tables = Record<string, any[]>;
 
 export type crud = {
@@ -20,14 +20,6 @@ export type data_crud = {
   };
 };
 
-// export type collect = {
-// op: "insert" | "update" | "delete";
-// collection: string;
-// fullDocument: unknown;
-// Id?: string;
-// companyId: string;
-// updatedFields?: unknown;
-// };
 export type collect = Omit<
   dataDB<unknown>,
   "op" | "companyId" | "fullDocument"
