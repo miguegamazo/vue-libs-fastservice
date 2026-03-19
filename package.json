@@ -14,7 +14,7 @@
     "typescript": "^5.8.0"
   },
   "dependencies": {
-    "@miguegamazo/lib-socket-fastservice": "^0.3.26",
+    "@miguegamazo/lib-socket-fastservice": "^0.4.0",
     "@types/lodash": "^4.17.24",
     "mongodb": "^7.1.0"
   }
