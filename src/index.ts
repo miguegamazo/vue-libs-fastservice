@@ -9,7 +9,9 @@ export type crud = {
   Id?: string;
   data?: any;
 };
+
 type CollectOp = "insert" | "update" | "delete";
+
 export type data_crud = {
   method: "POST" | "PATCH";
   url: "/admin/pCollection" | "/admin/uCollection" | "/admin/rCollection";
@@ -28,6 +30,7 @@ export type collect = Omit<
   companyId: string;
   fullDocument: unknown;
 };
+
 export type User = {
   _id: string;
   username: string;
