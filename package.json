@@ -1,22 +1,14 @@
 {
   "name": "@miguegamazo/vue-libs-fastservice",
   "version": "1.0.0",
-  "description": "Librería TypeScript compartida",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "clean": "rm -rf dist",
-    "dev": "tsc -p tsconfig.build.json --watch",
     "check": "tsc -p tsconfig.build.json --noEmit"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@types/node": "^24.0.0",
     "typescript": "^5.8.0"
