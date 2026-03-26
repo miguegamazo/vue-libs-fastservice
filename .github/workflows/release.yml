@@ -1,4 +1,4 @@
-name: Build and Release my-lib
+name: Build and Release vue-libs-fastservice
 
 on:
   push:
@@ -8,6 +8,10 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: write
 
     steps:
       - name: Checkout code
@@ -20,9 +24,10 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@miguegamazo"
 
-      - name: Configure npm auth for GitHub Packages
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}" > ~/.npmrc
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Sync version from Git tag to package.json
         run: |
@@ -30,9 +35,6 @@ jobs:
           VERSION=${TAG#v}
           echo "📝 Version $VERSION"
           npm version "$VERSION" --no-git-tag-version
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Type check
         run: npm run check
@@ -54,7 +56,7 @@ jobs:
           cp -r dist release/
           cp package.json release/
           cp README.md release/ || true
-          cd release && zip -r ../my-lib.zip .
+          cd release && zip -r ../vue-libs-fastservice.zip .
 
       - name: Upload ZIP to GitHub Release
         uses: softprops/action-gh-release@v2
